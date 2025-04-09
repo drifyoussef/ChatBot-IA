@@ -9,7 +9,7 @@ import ChatForm from './components/ChatForm';
 import ChatMessage from './components/ChatMessage';
 
 function App() {
-  const [chatHistory, setChatHistory] = useState([]);
+  const [chatHistory, setChatHistory] = useState<{ role: string; text: string }[]>([]);
   const [showChatbot, setShowChatbot] = useState(false);
 
   const generateBotResponse = async (history) => {
