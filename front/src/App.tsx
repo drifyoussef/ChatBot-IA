@@ -13,7 +13,6 @@ function App() {
   const [showChatbot, setShowChatbot] = useState(false);
 
   const generateBotResponse = async (history) => {
-
     history = history.map(({role, text}) => ({ role, parts: [{text}]}));
 
     const requestOptions = {
@@ -30,7 +29,11 @@ function App() {
         throw new Error('Network response was not ok');
       }
 
-      console.log(data);
+      // Ajouter la réponse de l'IA au chatHistory
+      setChatHistory(prevHistory => [
+        ...prevHistory,
+        { role: "model", text: data.response }
+      ]);
 
     } catch (error) {
       console.log(error);

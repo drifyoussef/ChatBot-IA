@@ -29,10 +29,10 @@ const ChatForm = ({ chatHistory, setChatHistory, generateBotResponse }) => {
       const data = await response.json();
       const botMessage = data.response;
 
-      setChatHistory((history) => [...history, { role: 'bot', text: botMessage }]);
+      setChatHistory((history) => [...history, { role: 'model', text: botMessage }]);
     } catch (error) {
       console.error('Error fetching bot response:', error.message);
-      setChatHistory((history) => [...history, { role: 'bot', text: 'Error: Unable to fetch response.' }]);
+      setChatHistory((history) => [...history, { role: 'model', text: 'Error: Unable to fetch response.' }]);
     }
   };
 
